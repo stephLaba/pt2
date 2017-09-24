@@ -8,11 +8,12 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 // setup
 
 
-$copy:'poppins';
-$display:'Space Mono', sans-serif;
+$copy:'Open Sans', sans-serif;
+$display:'Roboto Mono', monospace;
 
 
-$gray01: #DCE0E0;
+
+$gray01: #6F6F75;
 $gray02: #484848;
 $dgray03: #767676;
 
@@ -20,21 +21,66 @@ $black: #000000;
 $white: #ffffff;
 
 $red: #FF5A5F;
+$tan: #F4EECF;
 
 a {
 	text-decoration: none;
 	@extend .transition;
+	font-size: 0.75rem;
+	font-family: $display;
+	color: $gray01;
+
+	&:hover {
+		color: darken($gray01, 20%);
+	}
 }
+
+// Typography Styles: Start
 
 .upcase {
 	text-transform: uppercase;
 }
 
-.half {
-	width: 50%;
-	float: left;
+.copy {
+	font-family: $copy;
 }
 
+.display {
+	font-family: $display;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.regular {
+	font-weight:400;
+}
+
+.text-center {
+	display: block;
+	text-align: center
+}
+
+
+// Typography Styles: End
+
+
+.padding-large {
+	padding: 60px 20px;
+}
+
+.padding-medium {
+	padding: 30px 20px;
+}
+
+.padding-small {
+	padding: 10px 20px;
+}
+
+.padding-top-none {
+	padding: 0 20px;
+}
 
 .red {
 	color: $red;
@@ -44,45 +90,109 @@ a {
 	transition: all 0.3s ease-in-out;
 }
 
-.button {
-	&.button--main {
-		background: $red;
-		border-radius: 5px;
-		color: $white;
-		border: none;
-		box-shadow: none;
-		padding: 10px;
+a {
+	span.arrow {
+		position: relative;
+		left: 0;
 		@extend .transition;
+	}
 
-		&:hover,
-		&:active {
-			background: lighten($red, 5%);
+	&:hover {
+		span.arrow {
+			left: 5px;
 		}
 	}
 }
+
 
 html, body {
   height: 100%;
   margin: 0;
   padding: 0;
+  font-size: 100%;
+  font-family: $copy;
+  background: $tan;
 }
 
-body {
-	background: $white;
-	color: $gray02;
-	font-family: $copy;
-	background-image: url(../doge_bkg_op.png);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-size: 50%;
-	background-position: 100% 0;
+section {
+	@extend .padding-large;
 }
 
-.inner-wrapper {
-	max-width: 1120px;
-	padding: 0 20px;
-	width: 100%;
+
+
+.header {
+	p {
+		margin: 0 auto;
+
+	}
+
+	.inner {
+		width: 120px;
+	    height: 120px;
+	    border: 1px solid black;
+	    border-radius: 80%;
+	    padding-top: 30px;
+	    margin: 0 auto;
+	}
+
+	.passage-logo {
+		font-size: 1rem;
+		margin: 0;
+	}
+
+	.header--span {
+		font-size: 0.75rem;
+	}
+}
+
+
+.shop-locations {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	max-width: 800px;
 	margin: 0 auto;
+
+	.shop-locations--shop {
+		width: 50%;
+		height: auto;
+		margin: 0 auto;
+		text-align: center;
+
+		address {
+			font-style: normal;
+		}
+
+		&.one {
+				border-right: 1px solid $black;
+			}
+	}
+}
+
+section.phone {
+	border-top:1px solid black;
+	border-bottom:1px solid black;
+	@extend .padding-top-none;
+
+}
+
+section.artists {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+
+	.artist {
+		width: 33.33%;
+		height: auto;
+		margin: 0 auto;
+		text-align: center;
+	}
+}
+
+section.footer {
+	background: $black;
+	color: $gray01;
 }
 
 
