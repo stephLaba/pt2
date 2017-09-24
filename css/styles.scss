@@ -87,21 +87,7 @@ a {
 }
 
 .transition {
-	transition: all 0.3s ease-in-out;
-}
-
-a {
-	span.arrow {
-		position: relative;
-		left: 0;
-		@extend .transition;
-	}
-
-	&:hover {
-		span.arrow {
-			left: 5px;
-		}
-	}
+	transition: all 0.5s ease-in-out;
 }
 
 
@@ -171,8 +157,8 @@ section {
 }
 
 section.phone {
-	border-top:1px solid black;
-	border-bottom:1px solid black;
+	// border-top:1px solid black;
+	// border-bottom:1px solid black;
 	@extend .padding-top-none;
 
 }
@@ -181,12 +167,78 @@ section.artists {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
+	padding: 0;
+	background: $black;
 
 	.artist {
 		width: 33.33%;
 		height: auto;
 		margin: 0 auto;
 		text-align: center;
+		background: url(../i/artist_jay.jpg) no-repeat center;
+		-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+		filter: grayscale(100%);
+		@extend .transition;
+		color: $white;
+		position: relative;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		background-size: contain;
+
+
+
+		&:before {
+		     content: "";
+		     float: left;
+		     padding-top: 100%;
+		   }
+
+		&:after {
+			content: "";
+			 background: $black;
+			 opacity: 0.7;
+			 top: 0;
+			 left: 0;
+			 bottom: 0;
+			 right: 0;
+			 position: absolute;
+			 z-index: -1; 
+			 @extend .transition;
+		}
+
+		&:hover {
+			-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+			filter: grayscale(0);
+			cursor: pointer;
+
+			span.arrow {
+				left: 5px;
+			}
+
+			&:after{
+				content: "";
+				opacity: 0;
+			}
+		}
+
+		a {
+			display: block;
+		}
+
+
+		span.arrow {
+			position: relative;
+			left: 0;
+			@extend .transition;
+		}
+
+	}
+}
+
+.artist--inner-wrapper {
+	h3, span {
+		color: $white;
 	}
 }
 
