@@ -30,7 +30,7 @@ $regular: 300;
 
 
 $gray01: #6F6F75;
-$gray02: #484848;
+$gray02: #454545;
 $dgray03: #767676;
 
 $black: #000000;
@@ -39,12 +39,62 @@ $white: #ffffff;
 $red: #FF5A5F;
 $tan: #FCF6EE;
 
+
+// MQs
+
+// mqs 
+$xsmall:"(min-width: 321px)";
+$small-landscape:"(min-width: 400px)";
+$small-m:"(min-width: 687px)";
+$small:"(min-width: 768px)";
+$medium: "(min-width: 1024px)";
+
+// helpers
+.hide {
+	display: none;
+}
+
+.hide-medium-down {
+	display: block;
+	@media #{$medium} {
+		display: none;
+	}
+}
+
+.show-medium-up {
+	display: none;
+	@media #{$medium} {
+		display: block;
+	}
+}
+
+
+.hide-small-down {
+	display: block;
+	@media #{$small} {
+		display: none;
+	}
+}
+
+.show-small-up {
+	display: none;
+	@media #{$small} {
+		display: block;
+	}
+}
+
+
 a {
 	text-decoration: none;
 	@extend .transition;
 	font-size: 0.75rem;
 	font-family: $display;
 	color: $gray01;
+	font-weight: 800;
+
+	&:hover {
+		color: darken($gray01, 20%);
+	}
 }
 
 // Typography Styles: Start
@@ -87,19 +137,35 @@ a {
 
 
 .padding-large {
-	padding: 60px 40px;
+	padding: 30px 20px;
+
+	@media #{$small} {
+		padding: 60px 40px;
+	}
 }
 
 .padding-medium {
-	padding: 30px 40px;
+	padding: 15px 20px;
+
+	@media #{$small} {
+		padding: 30px 40px;
+	}
 }
 
 .padding-small {
-	padding: 10px 40px;
+	padding: 10px 20px;
+
+	@media #{$small} {
+		padding: 10px 40px;
+	}
 }
 
 .padding-top-none {
-	padding: 0 40px;
+	padding: 0 20px;
+
+	@media #{$small} {
+		padding: 10px 40px;
+	}
 }
 
 
@@ -130,14 +196,14 @@ section {
 	h1 {
 		font-size: 1rem;
 		font-family: $copy;
-		margin: 5px;
 		text-align: center;
+		margin: 5px 0 0 0;
 	}
 
 	h4 {
 		font-weight: $regular;
 		font-size: 0.75rem;
-		margin: 5px;
+		margin: 0;
 		text-align: center;
 	}
 
@@ -151,6 +217,10 @@ section {
 
 .contact {
 	padding: 0 20px;
+
+	a {
+		font-weight: 800;
+	}
 }
 
 .artists {
@@ -161,7 +231,6 @@ section {
 
 	.artist__container {
 		background-size: contain;
-		flex: 0 0 33.33%;
 		display: -ms-flexbox;
 		display: -webkit-flex;
 		display: flex;
@@ -173,9 +242,16 @@ section {
 		color: white;
 		text-align: center;
 		position: relative;
-		-webkit-filter: grayscale(100%);
-		filter: grayscale(100%);
 		backface-visibility: hidden;
+		-webkit-filter: grayscale(0);
+		filter: grayscale(0);
+		flex: 0 0 100%;
+
+		@media #{$small} {
+			-webkit-filter: grayscale(100%);
+			filter: grayscale(100%);
+			flex: 0 0 33.33%;
+		}
 
 		&.one {
 			background: url(../i/artist_jay.jpg) no-repeat;
@@ -185,11 +261,13 @@ section {
 		&.two {
 			background: url(../i/artist_tyson.jpg) no-repeat;
 			background-size: cover;
+			background-position-y: center;
 		}
 
 		&.three {
 			background: url(../i/artist_lauren.jpg) no-repeat;
-			background-size: cover;
+			// background-size: cover;
+			background-size: contain;
 		}
 
 		&.four {
@@ -228,10 +306,13 @@ section {
 			h4 {
 				font-weight: $regular;
 				margin: 5px; 
+				text-transform: uppercase;
+				font-size: 0.85rem;
 			}
 
 			h6 {
 				margin: 5px;
+
 			}
 		}
 
@@ -242,14 +323,19 @@ section {
 			width: 100%;
 			height: 100%;
 			position: absolute;
-			background-color: rgba(0,0,0, 0.5);
+			@extend .transition;
+
+
+			@media #{$small} {
+				background-color: rgba(0,0,0, 0.5);
+			}
 		}
 
 		&:hover {
 			-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
 			filter: grayscale(0);
 			a {
-				opacity: 0;
+				background-color: rgba(0,0,0, 0);
 			}
 
 			h6 > span {
@@ -280,7 +366,13 @@ section {
 	margin: 0 auto;
 
 	.location {
-		flex: 0 0 50%;
+		flex: 0 0 100%;
+		padding: 20px;
+
+
+		@media #{$small} {
+			flex: 0 0 50%;
+		}
 
 
 		h6 {
@@ -289,7 +381,12 @@ section {
 	}
 
 	.location__church {
-		border-right: 1px solid $black;
+		border-bottom: 1px solid $black;
+
+		@media #{$small} {
+			border-right: 1px solid $black;
+			border-bottom: none;
+		}
 	}
 
 	address {
@@ -302,6 +399,8 @@ section {
 	position: relative;
 	overflow: hidden;
 	display: flex;
+	background: $white;
+
 
 	h4, a {
 		color: $black;
@@ -310,10 +409,16 @@ section {
 	a {
 		margin: 0 10px 0 0;
 		color: $gray01;
+		font-weight: 800;
 
 		&:hover {
 			color: darken($gray01, 20%);
 		}
+	}
+
+	p {
+		font-size: .75rem;
+		font-weight: 800;
 	}
 
 	.margin-left {
@@ -324,13 +429,21 @@ section {
 		position: absolute;
 		opacity: .1;
 		max-width: 650px;
-		right: -81px;
-		transform: rotate(-33deg);
+		right: -25px;
+		top: 0;
 
 	}
 
 	.footer--inner {
 		align-self: center;
+		max-width: 1200px;
+		
+	}
+
+	.copyright {
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
 	}
 }
 
