@@ -7,10 +7,26 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 
 // setup
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+	margin: 0 0 10px 0;
+}
 
-$copy:'Open Sans', sans-serif;
-$display:'Roboto Mono', monospace;
+h6 {
+	font-size: 0.75rem;
+}
 
+
+$copy: "Roboto Mono", sans-serif;
+$display: "Roboto Mono", sans-serif;
+
+$regular: 300;
 
 
 $gray01: #6F6F75;
@@ -21,7 +37,7 @@ $black: #000000;
 $white: #ffffff;
 
 $red: #FF5A5F;
-$tan: #F4EECF;
+$tan: #FCF6EE;
 
 a {
 	text-decoration: none;
@@ -29,10 +45,6 @@ a {
 	font-size: 0.75rem;
 	font-family: $display;
 	color: $gray01;
-
-	&:hover {
-		color: darken($gray01, 20%);
-	}
 }
 
 // Typography Styles: Start
@@ -62,29 +74,34 @@ a {
 	text-align: center
 }
 
+.text-white {
+	color: $white;
+}
+
+.regular {
+	font-weight: $regular;
+}
+
 
 // Typography Styles: End
 
 
 .padding-large {
-	padding: 60px 20px;
+	padding: 60px 40px;
 }
 
 .padding-medium {
-	padding: 30px 20px;
+	padding: 30px 40px;
 }
 
 .padding-small {
-	padding: 10px 20px;
+	padding: 10px 40px;
 }
 
 .padding-top-none {
-	padding: 0 20px;
+	padding: 0 40px;
 }
 
-.red {
-	color: $red;
-}
 
 .transition {
 	transition: all 0.5s ease-in-out;
@@ -92,12 +109,11 @@ a {
 
 
 html, body {
-  height: 100%;
-  margin: 0;
+  margin: 0 auto;
   padding: 0;
   font-size: 100%;
   font-family: $copy;
-  background: $tan;
+  font-weight: 300;
 }
 
 section {
@@ -107,145 +123,221 @@ section {
 
 
 .header {
-	p {
-		margin: 0 auto;
+	z-index: 1;
+	width: 100%;
+	@extend .padding-medium;
 
-	}
-
-	.inner {
-		width: 120px;
-	    height: 120px;
-	    border: 1px solid black;
-	    border-radius: 80%;
-	    padding-top: 30px;
-	    margin: 0 auto;
-	}
-
-	.passage-logo {
+	h1 {
 		font-size: 1rem;
-		margin: 0;
-	}
-
-	.header--span {
-		font-size: 0.75rem;
-	}
-}
-
-
-.shop-locations {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	flex-direction: row;
-	max-width: 800px;
-	margin: 0 auto;
-
-	.shop-locations--shop {
-		width: 50%;
-		height: auto;
-		margin: 0 auto;
+		font-family: $copy;
+		margin: 5px;
 		text-align: center;
+	}
 
-		address {
-			font-style: normal;
-		}
+	h4 {
+		font-weight: $regular;
+		font-size: 0.75rem;
+		margin: 5px;
+		text-align: center;
+	}
 
-		&.one {
-				border-right: 1px solid $black;
-			}
+	.logo {
+		max-width: 125px;
+		margin: 0 auto;
+		display: block;
+		text-align: center;
 	}
 }
 
-section.phone {
-	// border-top:1px solid black;
-	// border-bottom:1px solid black;
-	@extend .padding-top-none;
-
+.contact {
+	padding: 0 20px;
 }
 
-section.artists {
+.artists {
 	display: flex;
 	flex-wrap: wrap;
 	width: 100%;
 	padding: 0;
-	background: $black;
 
-	.artist {
-		width: 33.33%;
-		height: auto;
-		margin: 0 auto;
-		text-align: center;
-		background: url(../i/artist_jay.jpg) no-repeat center;
-		-webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-		filter: grayscale(100%);
-		@extend .transition;
-		color: $white;
-		position: relative;
-		display: flex;
-		align-items: center;
-		justify-content: center;
+	.artist__container {
 		background-size: contain;
+		flex: 0 0 33.33%;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		-webkit-box-align: center;
+		align-items: center;
+		height: 50%;
+		color: white;
+		text-align: center;
+		position: relative;
+		-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
+		backface-visibility: hidden;
 
+		&.one {
+			background: url(../i/artist_jay.jpg) no-repeat;
+			background-size: cover;
+		}
+
+		&.two {
+			background: url(../i/artist_tyson.jpg) no-repeat;
+			background-size: cover;
+		}
+
+		&.three {
+			background: url(../i/artist_lauren.jpg) no-repeat;
+			background-size: cover;
+		}
+
+		&.four {
+			background: url(../i/artist_paul.jpg) no-repeat;
+			background-size: cover;
+		}
+
+		&.five {
+			background: url(../i/artist_katt.jpg) no-repeat;
+			background-size: cover;
+		}
+
+		&.six {
+			background: url(../i/artist_german.jpg) no-repeat;
+			background-size: cover;
+		}
 
 
 		&:before {
-		     content: "";
-		     float: left;
-		     padding-top: 100%;
-		   }
-
-		&:after {
-			content: "";
-			 background: $black;
-			 opacity: 0.7;
-			 top: 0;
-			 left: 0;
-			 bottom: 0;
-			 right: 0;
-			 position: absolute;
-			 z-index: -1; 
-			 @extend .transition;
+			content:'';
+			float:left;
+			padding-top:100%;
 		}
 
-		&:hover {
-			-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
-			filter: grayscale(0);
-			cursor: pointer;
+		.copy {
+			padding: 5px;
+			background: $white;
+			color: $black;
+			display: inline-block;
+			margin: auto;
+			position: absolute;
+			z-index: 1;
+			bottom: 20px;
+			left: 20px;
 
-			span.arrow {
-				left: 5px;
+			h4 {
+				font-weight: $regular;
+				margin: 5px; 
 			}
 
-			&:after{
-				content: "";
-				opacity: 0;
+			h6 {
+				margin: 5px;
 			}
 		}
 
 		a {
 			display: block;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			background-color: rgba(0,0,0, 0.5);
 		}
 
+		&:hover {
+			-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
+			filter: grayscale(0);
+			a {
+				opacity: 0;
+			}
 
-		span.arrow {
+			h6 > span {
+				position: relative;
+				left: 5px;
+			}
+		}
+	}
+
+	h6 {
+		color: $black;
+		text-transform: uppercase;
+
+		span {
+			color: $black;
 			position: relative;
 			left: 0;
 			@extend .transition;
 		}
-
 	}
 }
 
-.artist--inner-wrapper {
-	h3, span {
-		color: $white;
+.locations {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	max-width: 800px;
+	margin: 0 auto;
+
+	.location {
+		flex: 0 0 50%;
+
+
+		h6 {
+			font-style: normal;
+		}
+	}
+
+	.location__church {
+		border-right: 1px solid $black;
+	}
+
+	address {
+		margin: 0 0 20px 0;
 	}
 }
 
-section.footer {
-	background: $black;
-	color: $gray01;
+.footer{
+	min-height: 350px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+
+	h4, a {
+		color: $black;
+	}
+
+	a {
+		margin: 0 10px 0 0;
+		color: $gray01;
+
+		&:hover {
+			color: darken($gray01, 20%);
+		}
+	}
+
+	.margin-left {
+		margin-left: 10px;
+	}
+
+	&--logo {
+		position: absolute;
+		opacity: .1;
+		max-width: 650px;
+		right: -81px;
+		transform: rotate(-33deg);
+
+	}
+
+	.footer--inner {
+		align-self: center;
+	}
 }
+
+
+
+
+
 
 
 
