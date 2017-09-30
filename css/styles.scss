@@ -7,83 +7,429 @@ input[type=reset],input[type=submit]{-webkit-appearance:button;cursor:pointer;}b
 
 // setup
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+	margin: 0 0 10px 0;
+}
 
-$copy:'poppins';
-$display:'Space Mono', sans-serif;
+h6 {
+	font-size: 0.75rem;
+}
 
 
-$gray01: #DCE0E0;
-$gray02: #484848;
+$copy: "Roboto Mono", sans-serif;
+$display: "Roboto Mono", sans-serif;
+
+$regular: 300;
+
+
+$gray01: #6F6F75;
+$gray02: #454545;
 $dgray03: #767676;
 
 $black: #000000;
 $white: #ffffff;
 
 $red: #FF5A5F;
+$tan: #FCF6EE;
+
+
+
+// MQs
+
+$xsmall:"(min-width: 321px)";
+$small-landscape:"(min-width: 400px)";
+$small-m:"(min-width: 687px)";
+$small:"(min-width: 768px)";
+$medium: "(min-width: 1024px)";
+
+
+// helpers
+
+.hide {
+	display: none;
+}
+
+.hide-medium-down {
+	display: block;
+	@media #{$medium} {
+		display: none;
+	}
+}
+
+.show-medium-up {
+	display: none;
+	@media #{$medium} {
+		display: block;
+	}
+}
+
+
+.hide-small-down {
+	display: block;
+	@media #{$small} {
+		display: none;
+	}
+}
+
+.show-small-up {
+	display: none;
+	@media #{$small} {
+		display: block;
+	}
+}
+
 
 a {
 	text-decoration: none;
 	@extend .transition;
+	font-size: 0.75rem;
+	font-family: $display;
+	color: $gray01;
+	font-weight: 800;
+
+	&:hover {
+		color: darken($gray01, 20%);
+	}
 }
+
+// Typography Styles: Start
 
 .upcase {
 	text-transform: uppercase;
 }
 
-.half {
-	width: 50%;
-	float: left;
+.copy {
+	font-family: $copy;
+}
+
+.display {
+	font-family: $display;
+}
+
+.italic {
+	font-style: italic;
+}
+
+.regular {
+	font-weight:400;
+}
+
+.text-center {
+	display: block;
+	text-align: center
+}
+
+.text-white {
+	color: $white;
+}
+
+.regular {
+	font-weight: $regular;
 }
 
 
-.red {
-	color: $red;
+// Typography Styles: End
+
+
+
+.padding-large {
+	padding: 30px 20px;
+
+	@media #{$small} {
+		padding: 60px 40px;
+	}
 }
+
+.padding-medium {
+	padding: 15px 20px;
+
+	@media #{$small} {
+		padding: 30px 40px;
+	}
+}
+
+.padding-small {
+	padding: 10px 20px;
+
+	@media #{$small} {
+		padding: 10px 40px;
+	}
+}
+
+.padding-top-none {
+	padding: 0 20px;
+
+	@media #{$small} {
+		padding: 10px 40px;
+	}
+}
+
 
 .transition {
-	transition: all 0.3s ease-in-out;
+	transition: all 0.5s ease-in-out;
 }
 
-.button {
-	&.button--main {
-		background: $red;
-		border-radius: 5px;
-		color: $white;
-		border: none;
-		box-shadow: none;
-		padding: 10px;
-		@extend .transition;
 
-		&:hover,
-		&:active {
-			background: lighten($red, 5%);
+html, body {
+  margin: 0 auto;
+  padding: 0;
+  font-size: 100%;
+  font-family: $copy;
+  font-weight: 300;
+}
+
+section {
+	@extend .padding-large;
+}
+
+.inner-wrapper {
+	margin-bottom: 350px;
+	background: $white;
+}
+
+.header {
+	z-index: 1;
+	width: 100%;
+	@extend .padding-medium;
+
+	h1 {
+		font-size: 1rem;
+		font-family: $copy;
+		text-align: center;
+		margin: 5px 0 0 0;
+	}
+
+	h4 {
+		font-weight: $regular;
+		font-size: 0.75rem;
+		margin: 0;
+		text-align: center;
+	}
+
+	.logo {
+		max-width: 125px;
+		margin: 0 auto;
+		display: block;
+		text-align: center;
+	}
+}
+
+.contact {
+	padding: 0 20px;
+
+	a {
+		font-weight: 800;
+	}
+}
+
+.artists {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	padding: 0;
+
+	.artist__container {
+		background-size: contain;
+		display: -ms-flexbox;
+		display: -webkit-flex;
+		display: flex;
+		-ms-flex-align: center;
+		-webkit-align-items: center;
+		-webkit-box-align: center;
+		align-items: center;
+		height: 50%;
+		color: white;
+		text-align: center;
+		position: relative;
+		backface-visibility: hidden;
+		background: $black;
+		overflow: hidden;
+
+		@media #{$small} {
+			flex: 0 0 33.3%;
+		}
+
+
+		img {
+			width: 100%;
+			opacity: 1;
+			@extend .transition;
+			backface-visibility: hidden;
+
+
+			@media #{$small} {
+				opacity: 0.4;
+			}
+		}
+
+		.copy {
+			padding: 5px;
+			background: $white;
+			color: $black;
+			display: inline-block;
+			margin: auto;
+			position: absolute;
+			z-index: 1;
+			bottom: 20px;
+			left: 20px;
+
+			h4 {
+				font-weight: $regular;
+				margin: 5px; 
+				text-transform: uppercase;
+				font-size: 0.85rem;
+				font-style: italic;
+			}
+
+			h6 {
+				margin: 5px;
+				font-style: italic;
+			}
+		}
+
+		a {
+			display: block;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			@extend .transition;
+		}
+
+		&:hover {
+
+			img {
+				opacity: 1;
+				transform: scale(1.01);
+			}
+
+
+			h6 > span {
+				position: relative;
+				left: 5px;
+			}
+		}
+	}
+
+	h6 {
+		color: $black;
+		text-transform: uppercase;
+
+		span {
+			color: $black;
+			position: relative;
+			left: 0;
+			@extend .transition;
 		}
 	}
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-	background: $white;
-	color: $gray02;
-	font-family: $copy;
-	background-image: url(../doge_bkg_op.png);
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-size: 50%;
-	background-position: 100% 0;
-}
-
-.inner-wrapper {
-	max-width: 1120px;
-	padding: 0 20px;
-	width: 100%;
+.locations {
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	max-width: 800px;
 	margin: 0 auto;
+
+	.location {
+		flex: 0 0 100%;
+		padding: 20px;
+
+
+		@media #{$small} {
+			flex: 0 0 50%;
+		}
+
+
+		h6 {
+			font-style: normal;
+		}
+	}
+
+	.location__church {
+		border-bottom: 1px solid $black;
+
+		@media #{$small} {
+			border-right: 1px solid $black;
+			border-bottom: none;
+		}
+	}
+
+	address {
+		margin: 0 0 20px 0;
+	}
 }
+
+.footer{
+	min-height: 350px;
+	position: relative;
+	overflow: hidden;
+	display: flex;
+	background: $white;
+	position: fixed;
+	 z-index: -1;
+	 height: 350px; /*This may to be adjusted depending on the content of your footer*/
+	 width: 100%;
+	 bottom: 0;
+
+
+	h4, a {
+		color: $black;
+	}
+
+	a {
+		margin: 0 10px 0 0;
+		color: $gray01;
+		font-weight: 800;
+
+		&:hover {
+			color: darken($gray01, 20%);
+		}
+	}
+
+	p {
+		font-size: .75rem;
+		font-weight: 800;
+	}
+
+	.margin-left {
+		margin-left: 10px;
+	}
+
+	&--logo {
+		position: absolute;
+		opacity: .1;
+		max-width: 650px;
+		right: -25px;
+		top: 0;
+
+	}
+
+	.footer--inner {
+		align-self: center;
+		max-width: 1200px;
+		
+	}
+
+	.copyright {
+		position: absolute;
+		bottom: 10px;
+		left: 20px;
+	}
+}
+
+
+
+
+
 
 
 
