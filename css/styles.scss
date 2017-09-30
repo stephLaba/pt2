@@ -40,16 +40,18 @@ $red: #FF5A5F;
 $tan: #FCF6EE;
 
 
+
 // MQs
 
-// mqs 
 $xsmall:"(min-width: 321px)";
 $small-landscape:"(min-width: 400px)";
 $small-m:"(min-width: 687px)";
 $small:"(min-width: 768px)";
 $medium: "(min-width: 1024px)";
 
+
 // helpers
+
 .hide {
 	display: none;
 }
@@ -136,6 +138,7 @@ a {
 // Typography Styles: End
 
 
+
 .padding-large {
 	padding: 30px 20px;
 
@@ -186,7 +189,10 @@ section {
 	@extend .padding-large;
 }
 
-
+.inner-wrapper {
+	margin-bottom: 350px;
+	background: $white;
+}
 
 .header {
 	z-index: 1;
@@ -243,53 +249,24 @@ section {
 		text-align: center;
 		position: relative;
 		backface-visibility: hidden;
-		-webkit-filter: grayscale(0);
-		filter: grayscale(0);
-		flex: 0 0 100%;
+		background: $black;
+		overflow: hidden;
 
 		@media #{$small} {
-			-webkit-filter: grayscale(100%);
-			filter: grayscale(100%);
-			flex: 0 0 33.33%;
-		}
-
-		&.one {
-			background: url(../i/artist_jay.jpg) no-repeat;
-			background-size: cover;
-		}
-
-		&.two {
-			background: url(../i/artist_tyson.jpg) no-repeat;
-			background-size: cover;
-			background-position-y: center;
-		}
-
-		&.three {
-			background: url(../i/artist_lauren.jpg) no-repeat;
-			// background-size: cover;
-			background-size: contain;
-		}
-
-		&.four {
-			background: url(../i/artist_paul.jpg) no-repeat;
-			background-size: cover;
-		}
-
-		&.five {
-			background: url(../i/artist_katt.jpg) no-repeat;
-			background-size: cover;
-		}
-
-		&.six {
-			background: url(../i/artist_german.jpg) no-repeat;
-			background-size: cover;
+			flex: 0 0 33.3%;
 		}
 
 
-		&:before {
-			content:'';
-			float:left;
-			padding-top:100%;
+		img {
+			width: 100%;
+			opacity: 1;
+			@extend .transition;
+			backface-visibility: hidden;
+
+
+			@media #{$small} {
+				opacity: 0.4;
+			}
 		}
 
 		.copy {
@@ -308,11 +285,12 @@ section {
 				margin: 5px; 
 				text-transform: uppercase;
 				font-size: 0.85rem;
+				font-style: italic;
 			}
 
 			h6 {
 				margin: 5px;
-
+				font-style: italic;
 			}
 		}
 
@@ -324,19 +302,15 @@ section {
 			height: 100%;
 			position: absolute;
 			@extend .transition;
-
-
-			@media #{$small} {
-				background-color: rgba(0,0,0, 0.5);
-			}
 		}
 
 		&:hover {
-			-webkit-filter: grayscale(0); /* Safari 6.0 - 9.0 */
-			filter: grayscale(0);
-			a {
-				background-color: rgba(0,0,0, 0);
+
+			img {
+				opacity: 1;
+				transform: scale(1.01);
 			}
+
 
 			h6 > span {
 				position: relative;
@@ -400,6 +374,11 @@ section {
 	overflow: hidden;
 	display: flex;
 	background: $white;
+	position: fixed;
+	 z-index: -1;
+	 height: 350px; /*This may to be adjusted depending on the content of your footer*/
+	 width: 100%;
+	 bottom: 0;
 
 
 	h4, a {
